@@ -15,10 +15,10 @@ const busImg = document.querySelector('header.intro img');
 const destinationTopic = document.querySelectorAll('.destination h4');
 
 //mouseover
-letsGo.addEventListener('mouseover', evt => {
+headLogo.addEventListener('mouseover', evt => {
     evt.target.style.color = 'green';
 })
-letsGo.addEventListener('mouseout', evt =>{
+headLogo.addEventListener('mouseout', evt =>{
     evt.target.style.color = 'black';
 })
 
@@ -27,12 +27,18 @@ const fullBody = document.querySelector('body');
 const gKey = (evt) => {
     if (evt.key === 'g'){
         evt.target.style.backgroundColor = 'blue';
-        evt.target.style.color = 'white'
+        evt.target.style.color = 'white';
     } else {
-        console.log('try another key --- g');
-    }
+        console.log("try another key --- hint: it's g");
+    }}
+const escKey = (evt) => {
+    if (evt.target.style.backgroundColor === 'blue' && evt.key === "Escape"){
+        evt.target.style.backgroundColor = "white";
+        evt.target.style.color = "black";
+    } else {console.log('hit escape to go back')}
 }
 fullBody.addEventListener('keydown', gKey)
+fullBody.addEventListener('keydown', escKey)
 
 
 //mouseover forEach
@@ -53,26 +59,22 @@ navItems.forEach((btn) => {
 
 
 
-//select
 
 
-// destinationTopic.addEventListener('select', (evt) => {
-//     //const selectPar = document.querySelector('.btn');
-//     evt.preventDefault();
-//     evt.target.selectionStart, evt.target.selectionEnd;
-// })
 
-
-//drag and drop
+/////drag and drop
 
 
 // setAttribute.add('id=')
 
 
+// ! focus & blur text input -- had to create input.. dont know why it wouldnt work
 
 let newInput = document.createElement('input');
-newInput.setAttribute("style", "display: inline; whiteSpace: nowrap");
-newInput.innerHTML = '<input type="text" placeholder= "search something" >';
+newInput.setAttribute("type", "text");  
+newInput.setAttribute("style","display: inline; whiteSpace: nowrap");
+newInput.setAttribute("value", "try selecting this")
+// newInput.innerHTML = '<input type="text" placeholder= "search something" >';
 document.querySelector('.nav-container').appendChild(newInput);
 
 const search = document.querySelector('input[type="text"]');
@@ -81,5 +83,27 @@ search.addEventListener('focus', (evt) => {
     evt.target.style.backgroundColor = 'pink';
 });
 search.addEventListener('blur', (evt) => {
-    evt.target.style.background = '';
+    evt.target.style.backgroundColor = '';
 })
+
+let newPar = document.createElement('p')
+newPar.setAttribute("id",  "log")
+newPar.setAttribute('style', 'display: flex; flex-wrap: wrap; white-space:wrap')
+document.querySelector('.nav-container').appendChild(newPar);
+
+
+//SELECT
+newInput.addEventListener('select', (evt) => {
+    const log = document.querySelector('#log');
+    evt.preventDefault();
+    const selection  = evt.target.value.substring(evt.target.selectionStart, evt.target.selectionEnd);
+    log.textContent =  `you selected ${selection}`
+})
+
+
+
+// !this is a comment
+// ?another comment
+// TODO: this is super cool
+// *is this any dfifferent
+//this is something else
