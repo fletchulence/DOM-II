@@ -11,8 +11,8 @@ const navItems = document.querySelectorAll('nav a');
 //IMAGES
 const busImg = document.querySelector('header.intro img');
 
-//BUTTONS
-const signUp = document.querySelectorAll('.btn');
+//destinations
+const destinationTopic = document.querySelectorAll('.destination h4');
 
 //mouseover
 letsGo.addEventListener('mouseover', evt => {
@@ -24,8 +24,7 @@ letsGo.addEventListener('mouseout', evt =>{
 
 //keydown
 const fullBody = document.querySelector('body');
-
-let gKey = (evt) => {
+const gKey = (evt) => {
     if (evt.key === 'g'){
         evt.target.style.backgroundColor = 'blue';
         evt.target.style.color = 'white'
@@ -36,7 +35,7 @@ let gKey = (evt) => {
 fullBody.addEventListener('keydown', gKey)
 
 
-//resize
+//mouseover forEach
 navItems.forEach((btn) => {
     btn.addEventListener('mouseover', () => {
         btn.style.color = 'green';
@@ -47,14 +46,40 @@ navItems.forEach((btn) => {
 })
 
 
-// resize
-busImg.addEventListener('onresize', (evt) =>{
-    evt.target.style.height = '5px';
-    debugger;
-})
+// resize??
+// busImg.addEventListener('resize', (evt) =>{
+//     window.onresize = () =>{ evt.target.height = '100%' };
+// })
+
+
+
+//select
+
+
+// destinationTopic.addEventListener('select', (evt) => {
+//     //const selectPar = document.querySelector('.btn');
+//     evt.preventDefault();
+//     evt.target.selectionStart, evt.target.selectionEnd;
+// })
 
 
 //drag and drop
 
 
-// setatt.add()
+// setAttribute.add('id=')
+
+
+
+let newInput = document.createElement('input');
+newInput.setAttribute("style", "display: inline; whiteSpace: nowrap");
+newInput.innerHTML = '<input type="text" placeholder= "search something" >';
+document.querySelector('.nav-container').appendChild(newInput);
+
+const search = document.querySelector('input[type="text"]');
+
+search.addEventListener('focus', (evt) => {
+    evt.target.style.backgroundColor = 'pink';
+});
+search.addEventListener('blur', (evt) => {
+    evt.target.style.background = '';
+})
